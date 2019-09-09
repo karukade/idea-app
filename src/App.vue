@@ -54,6 +54,13 @@
 export default {
   props: {
     source: String
+  },
+  mounted() {
+    if (!window.parent) return;
+    const v = window.parent.document.createElement("meta");
+    v.name = "viewport";
+    v.content = "width=device-width,initial-scale=1";
+    window.parent.document.head.append(v);
   }
 };
 </script>
